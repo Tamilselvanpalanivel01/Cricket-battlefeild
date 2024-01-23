@@ -1,0 +1,155 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:linear-gradient(to right, #FFA500 50%, #000000 50%) ;
+    font-family: 'Prompt', sans-serif;
+}
+
+.circleframe{
+    margin-bottom: 1px;
+    width: 8rem;
+    height: 8rem;
+    border: 8px solid #F2F2F2;
+    border-radius:50%;
+    margin-top: -5rem;
+}
+
+.flexCenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    margin-top: 75px;
+    width: 350px;
+    border-radius: 25px;
+    background-color: #F2F2F2;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.content{
+    border-radius: 25px;
+    height: 333px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imageContainer{
+    width: 100%;
+    background-color: #F2F2F2;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+h3{
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.textField{
+    height: 50px;
+    padding-left: 2rem;
+    border-radius: 25px;
+    border: none;
+    width: 80%;
+    font-size: 1rem;
+    border: 1px solid black;
+    outline-color: #e6b032;
+}
+.textField:hover{
+   outline-color: #4da02c;
+
+
+}
+.primaryBtn{
+    border-radius: 25px;
+    height: 50px;
+    border: none;
+    background-color: #000000 ;
+    width: 80%;
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+}
+.primaryBtn:hover{
+   
+    background-color: #FFA500;
+}
+
+.primaryBtn:active {
+    transform: scale(0.98);
+}
+
+a{
+    text-decoration: none;
+    color: green;
+    
+    margin: 1rem 0rem;
+}
+a:hover{
+    color: #4da02c;
+    text-decoration: underline;
+    
+}
+   
+
+.errorforsign{
+    color: red;
+
+
+
+}
+
+
+@media only screen and (max-width: 320px) {
+
+    .card {
+        margin-top: 93px;
+        width: 295px;
+        border-radius: 25px;
+        background-color: #F2F2F2;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    }
+
+
+
+    
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .card {
+        margin-top: 86px;
+        width: 295px;
+        border-radius: 25px;
+        background-color: #F2F2F2;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    }
+
+
+
+    
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    .card {
+        margin-top: 91px;
+        width: 295px;
+        border-radius: 25px;
+        background-color: #F2F2F2;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    }
+
+
+    
+}

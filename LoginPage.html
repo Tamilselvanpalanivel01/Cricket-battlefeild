@@ -1,0 +1,172 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Poppins:wght@200&family=Prompt:wght@300;400&family=Saira:wght@300;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="Logincss.css">
+</head>
+<body>
+    <div class="card">
+        <div class="imageContainer flexCenter">
+            <img class="circleframe" src="144780665445.jpg" alt="profile"/>
+            <h3>Login</h3>
+        </div>
+        <div class="content">
+            <input class="textField" id="email" type="email" placeholder="Email" name="Email" />
+            <span id="error1"  class="errorforsign"></span>
+            <input class="textField" id="password"       type="password" placeholder="Password" name="password" />
+            <span id="error2"  class="errorforsign"></span>
+            <button class="primaryBtn" onclick="Login()">Login</button>
+            <span id="error3"  class="errorforsign"></span>
+            <a href="Signup.html">Create New account</a>
+        </div>
+    </div>
+
+
+    <div class="modal" tabindex="-1" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Success!</h5>
+              <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>user detail was not match.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" style="background-color: rgb(187, 19, 19);" onclick="closeModal()">Close</button>
+              <button type="button" class="btn" style="background-color: black;color: white;" onclick="redirect()">SignUp</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+    <div class="modal" tabindex="-1" id="myModal2">
+        <div class="modal-dialog">
+          <div class="modal-content" style="background-color:  #d6900d;">
+            <div class="modal-header">
+              <h5 class="modal-title">Success!</h5>
+              <button type="button" class="btn-close" onclick="closeModal1()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Login successfully.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" style="background-color: rgb(187, 19, 19);" onclick="closeModal1()">Close</button>
+              <button type="button" class="btn" style="background-color: black;color: white;" onclick="redirect1()">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+</body>
+<script>
+    function Login(){
+   
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    
+
+    let error1 = document.getElementById('error1')
+    let error2 = document.getElementById('error2')
+    let error3 = document.getElementById('error3')
+    
+
+   
+    if (email == "") {
+        error1.innerText = "Emailid Required ";
+        return false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        error1.innerText = "Enter a valid email address.";
+        return false;
+    } else {
+        error1.innerText = "";
+    }
+    if (password == "") {
+        error2.innerText = "Password Required ";
+        return false;
+    } else if (!/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?!.* ).{8,16}$/.test(password)) {
+        error2.innerText = "Enter a valid Password";
+        return false;
+    } else {
+        error2.innerText = "";
+    }
+
+   
+
+
+
+    let Usersdatas;  
+
+const storedUserData = localStorage.getItem('Usersdatas');
+
+if (storedUserData) {
+    Usersdatas = JSON.parse(storedUserData);
+}
+
+
+if (Usersdatas) {
+    const sameuser = Usersdatas.find((user)=> user.email === email);
+
+    if (sameuser) {
+      const matchinguser = Usersdatas.find((user) => user.email === email && user.password === password);
+      if(matchinguser){ document.getElementById('myModal2').style.display = 'block';
+    }else{
+      error2.innerText = "invalid Password";
+    }
+     
+       
+    } else {
+      document.getElementById('myModal').style.display = 'block';
+    }
+}
+
+
+
+   
+
+
+
+   }
+
+
+   function closeModal() {
+    document.getElementById('myModal').style.display = 'none';
+  
+}
+
+
+function redirect() {
+  window.location.href = 'Signup.html'
+}
+
+
+
+
+function closeModal1() {
+    document.getElementById('myModal2').style.display = 'none';
+  
+}
+
+
+function redirect1() {
+   window.location.href = 'crictask.Html'
+ 
+}
+
+</script>
+</html>

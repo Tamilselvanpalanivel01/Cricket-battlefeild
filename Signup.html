@@ -1,0 +1,235 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Poppins:wght@200&family=Prompt:wght@300;400&family=Saira:wght@300;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="Signup.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div class="cards">
+    <div class="imageContainer flexCenter">
+      <img class="circleframe" src="Cricket-Stadium.jpg" alt="profile" />
+      <h3>SignUp</h3>
+    </div>
+    <div class="content">
+      <input class="textField" id="username" type="username" placeholder="Username" name="username"
+        oninput="this.value = this.value.replace(/[^a-zA-Z]/g,'')" maxlength="21" />
+      <span id="err1" class="errorforsign"></span>
+      <input class="textField" id="email" type="email" placeholder="Email" name="Email" />
+      <span id="err2" class="errorforsign"></span>
+      <input class="textField" id="password" type="password" placeholder="Password" name="password" />
+      <span id="err3" class="errorforsign"></span>
+      <input class="textField" id="confirmpassword" type="password" placeholder="Confirm Password"
+        name="confirm password" />
+      <span id="err4" class="errorforsign"></span>
+      <button class="primaryBtn" onclick="signup()">Signup</button>
+      <span id="err5" class="errorforsign"></span>
+      <p>Have already an account <a href='LoginPage.html'>Login</a></p>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="modal" tabindex="-1" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style ="background-color: #4a93bd;" >
+        <div class="modal-header">
+          <h5 class="modal-title">Success!</h5>
+          <button type="button" class="btn-close" style="background-color: rgba(255, 0, 0, 0.774);" onclick="closeModal()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>SignUp successfully.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn " style="background-color:  rgba(255, 0, 0, 0.774)" onclick="closeModal()">Close</button>
+          <button type="button" class="btn " style="background-color: orange;"  onclick="redirect()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal" tabindex="-1" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content" style ="background-color:#4a93bd;">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn-close" style="background-color: rgba(255, 0, 0, 0.774);" onclick="closeModal2()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>User with the same username or email already exists!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" style="background-color:  rgba(255, 0, 0, 0.774)" onclick="closeModal2()">Close</button>
+          <button type="button" class="btn" style="background-color: orange;" onclick="redirect2()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function signup() {
+      let username = document.getElementById('username').value;
+      let email = document.getElementById('email').value;
+      let password = document.getElementById('password').value;
+      let confirmpassword = document.getElementById('confirmpassword').value
+
+      let error1 = document.getElementById('err1')
+      let error2 = document.getElementById('err2')
+      let error3 = document.getElementById('err3')
+      let error4 = document.getElementById('err4')
+      let error5 = document.getElementById('err5')
+
+      if (username == "") {
+        error1.innerText = "UserName Required";
+
+        return false;
+      } else {
+        error1.innerText = "";
+
+      }
+      if (email == "") {
+        error2.innerText = "Emailid Required ";
+        return false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        error2.innerText = "Enter a valid email address.";
+        return false;
+      } else {
+        error2.innerText = "";
+      }
+      if (password == "") {
+        error3.innerText = "Password Required ";
+        return false;
+      } else if (!/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?!.* ).{8,16}$/.test(password)) {
+        error3.innerText = "Enter a valid Password";
+        return false;
+      } else {
+        error3.innerText = "";
+      }
+
+      if (confirmpassword == "") {
+        error4.innerText = "Confirm-Password Required ";
+        return false;
+      } else if (!/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?!.* ).{8,16}$/.test(password)) {
+        error4.innerText = "Enter a valid Confirm-Password";
+        return false;
+      } else if (password !== confirmpassword) {
+        error4.innerText = "Password doesn't match";
+        return false;
+
+      } else {
+        error4.innerText = "";
+      }
+
+
+
+
+
+      const storedUserData = localStorage.getItem('Usersdatas');
+      let Usersdatas = Array.isArray(JSON.parse(storedUserData)) ? JSON.parse(storedUserData) : [];
+
+
+      const newUser = {
+        username: username,
+        email: email,
+        password: password,
+      };
+
+      const existingUser = Usersdatas.find(user => user.username === newUser.username || user.email === newUser.email);
+
+      if (existingUser) {
+        document.getElementById('myModal2').style.display = 'block';
+
+      } else {
+        Usersdatas.push(newUser);
+        localStorage.setItem('Usersdatas', JSON.stringify(Usersdatas));
+        document.getElementById('myModal').style.display = 'block';
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+    function closeModal() {
+      document.getElementById('myModal').style.display = 'none';
+
+    }
+
+
+    function redirect() {
+      window.location.href = 'crictask.Html';
+    }
+
+
+    function closeModal2() {
+      document.getElementById('myModal2').style.display = 'none';
+
+    }
+
+
+    function redirect2() {
+      document.getElementById('myModal2').style.display = 'none';
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
